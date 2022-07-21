@@ -29,7 +29,7 @@ export default function Home() {
             <div className="backGround">
 
 {
-            <TodoList/>
+            <TodoList props={getServerSideProps()}/>
 }
 
                 <div id="login">
@@ -41,7 +41,6 @@ export default function Home() {
         </div>
     )
 }
-/*
 export const getServerSideProps = async () => {
     const { data } = await axios.get('http://localhost:8080/api/posts');
     return {
@@ -50,5 +49,4 @@ export const getServerSideProps = async () => {
         },
     };
 };
-*/
 
