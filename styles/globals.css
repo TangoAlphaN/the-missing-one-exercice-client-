@@ -1,9 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: Jura, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -13,4 +16,34 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+input {
+  background: none;
+  border-bottom: 4px solid;
+  border-image-slice: 1;
+  width: 350px
+}
+
+.gradient-fuchsia {
+  border-image-source: linear-gradient(90deg, #DD1EC0 0%, #7120E8 98.87%);
+}
+
+input::placeholder {
+  color: #E11CC5;
+  text-align: center;
+}
+
+input:focus {
+  outline: #E11CC5;
+  color: #E11CC5;
+  background: none;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+.backGround {
+  background: linear-gradient(180deg, #1F1D3B 0%, #192733 100%);
 }
