@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import {persons} from '../lib/auth.js'
+import Footer from "./Footer";
 
 class Form extends Component {
 
@@ -23,9 +24,9 @@ class Form extends Component {
     render()
     {
         return (
-            <div>
+            <div className="min-h-screen">
                 <form
-                        className="flex flex-col place-items-center mb-12"
+                        className="flex flex-col place-items-center my-12"
                         onSubmit={this.handleSubmit}>
                     <p className="text-7xl text-fuchsia-600 my-12">Join us</p>
                     <input type="text"
