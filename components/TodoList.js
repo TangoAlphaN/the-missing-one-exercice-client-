@@ -1,8 +1,25 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
+import https from 'https';
 
-export default function TodoList(props) {
-    const [tasks, setTasks] = useState(props.tasks);
+export default function TodoList() {
+    const [tasks, setTasks] = useState([]);
+
+    // At instance level
+    const instance = axios.create({
+        httpsAgent: new https.Agent({
+            rejectUnauthorized: false
+        })
+    });
+
+    useEffect(() => {
+        axios
+            .get("http://localhost:8080/posts")
+            .then(response => {
+                setTasks(response.data)
+                console.log(response.data);
+            });
+    }, []);
     const [task, setTask] = useState({ task: "" });
 
     const handleChange = ({ currentTarget: input }) => {
@@ -66,12 +83,12 @@ export default function TodoList(props) {
     };
 
     return (
-        <main className="w-screen min-h-screen flex flex-col items-center justify-center">
+        <main className="my-12 w-screen min-h-fit flex flex-col items-center justify-center">
             <h1 className="text-fuchsia-600 text-7xl">Todo-List</h1>
             <div className="flex flex-col items-center p-5 rounded-lg">
                 <form onSubmit={addTask} className="flex items-center mb-6">
-                    <input className="grow outline-none border-2 text-base" type="text" placeholder="Task to be done" onChange={handleChange} value={task.task}/>
-                    <button type="submit" className="bg-indigo-600 text-white text-xl hover:bg-fuchsia-900"> {task.id ? "Update" : "Add"}</button>
+                    <input className="grow text-fuchsia-600 text-center gradient-fuchsia text-3xl my-2" type="text" placeholder="Task to be done" onChange={handleChange} value={task.task}/>
+                    <button type="submit" className="m-4 rounded bg-fuchsia-700 text-white text-xl hover:bg-fuchsia-900"> {task.id ? "Update" : "Add"}</button>
                 </form>
                 {tasks?.map((task) => (
                     <div key={task.id} className="flex items-center justify-between p-1 my-1 rounded-sm border-2">
@@ -87,7 +104,7 @@ export default function TodoList(props) {
                     </button>
                     </div>
                 ))}
-                {tasks?.length === 0 && <h2 className="flex text-lg m-0 items-center justify-center capitalize rounded">No tasks</h2>}
+                {tasks?.length === 0 && <h2 className="flex text-lg m-0 items-center text-white justify-center capitalize rounded">No tasks</h2>}
             </div>
         </main>
     );

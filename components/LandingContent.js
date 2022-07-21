@@ -8,7 +8,7 @@ class LandingContent extends Component {
         return (
             <div className="flex flex-row place-content-center content-center text-white h-screen w-full space-x-60">
                 <div className="mx-8 my-auto" >
-                    <img className="drop-shadow-2xl hover:drop-shadow-none"  src="../svg/cat.svg" style={{height: 650, width: 350}} />
+                    <img className="drop-shadow-[-30px_15px_16px_rgb(225,30,192)] hover:drop-shadow-none"  src="../svg/cat.svg" style={{height: 650, width: 350}} />
                 </div >
 
                 <div className="flex flex-col mx-8 my-auto" >
